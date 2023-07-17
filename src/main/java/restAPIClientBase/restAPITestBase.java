@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class restAPITestBase {
+    public static int RESPONSE_CODE_200=200;
     public Properties properties;
    public restAPITestBase(){
        properties=new Properties();

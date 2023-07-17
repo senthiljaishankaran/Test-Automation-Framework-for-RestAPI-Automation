@@ -13,23 +13,10 @@ import java.util.HashMap;
 
 public class RestAPIClient {
     // Get Method
-   public void get(String URL) throws IOException, ParseException {
+   public CloseableHttpResponse get(String URL) throws IOException {
        CloseableHttpClient closeableHttpClient =HttpClients.createDefault();
        HttpGet httpGet=new HttpGet(URL);
        CloseableHttpResponse closeableHttpResponse=closeableHttpClient.execute(httpGet);
-       int statusCode=closeableHttpResponse.getCode();
-       System.out.println("Status Code is: "+ statusCode);
-
-       String responseString= EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
-       System.out.println("Response String is :"+ responseString);
-
-       Header[] headerArray=closeableHttpResponse.getHeaders();
-       HashMap<String,String> allHeader= new HashMap<String,String>();
-
-       for(Header header:headerArray){
-           allHeader.put(header.getName(), header.getValue());
-       }
-       System.out.println("Response from JSON"+allHeader);
-
+       return closeableHttpResponse;
    }
 }
