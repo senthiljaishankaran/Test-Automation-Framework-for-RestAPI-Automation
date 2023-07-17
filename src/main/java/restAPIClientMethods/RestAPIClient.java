@@ -10,12 +10,16 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class RestAPIClient {
     // Get Method
-   public CloseableHttpResponse get(String URL) throws IOException {
+   public CloseableHttpResponse get(String URL,HashMap<String,String> headerMap) throws IOException {
        CloseableHttpClient closeableHttpClient =HttpClients.createDefault();
        HttpGet httpGet=new HttpGet(URL);
+       for(Map.Entry<String,String> entry:headerMap.entrySet()){
+           httpGet.addHeader(entry.getKey(),entry.getValue());
+       }
        CloseableHttpResponse closeableHttpResponse=closeableHttpClient.execute(httpGet);
        return closeableHttpResponse;
    }
