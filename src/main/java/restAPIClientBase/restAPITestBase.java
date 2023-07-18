@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class restAPITestBase {
     public static int RESPONSE_CODE_200=200;
+    public static int RESPONSE_CODE_201=201;
     public Properties properties;
    public restAPITestBase(){
        properties=new Properties();
